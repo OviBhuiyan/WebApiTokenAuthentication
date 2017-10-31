@@ -13,6 +13,8 @@ namespace WebApiTokenAuthentication
     {
         public void Configuration(IAppBuilder app)
         {
+
+
             // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=316888
             //enable cors origin request
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
@@ -27,10 +29,12 @@ namespace WebApiTokenAuthentication
             };
 
             app.UseOAuthAuthorizationServer(options);
-            app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions());
-
+            // app.UseOAuthAuthorizationServer(new OAuthAuthorizationServerOptions());
+            app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);
+
+
 
 
         }
